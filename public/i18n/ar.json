@@ -1,0 +1,100 @@
+{
+    "home":{
+      "discount_title": "%خصومات هائلة تصل إلى 50",
+      "discount_description": "أحدث العروض على منتجات مختارة",
+      "shop_now": "تسوق الآن",
+      "TITLE": "مرحباً",
+      "DESCRIPTION": "هنا بعض النصوص...",
+      "HOME": "الرئيسية",
+      "PRODUCTS": "المنتجات",
+      "CATEGORIES": "الفئات",
+      "SEARCH": "بحث...",
+      "ADD_TO_CART": "أضف إلى السلة"
+      },
+      "navbar":{
+        "home": "الرئيسية",
+        "products": "المنتجات",
+        "categories": "الفئات",
+        "brands": "الماركات",
+        "cart": "عربة التسوق",
+        "login": "تسجيل الدخول",
+        "register": "إنشاء حساب",
+        "signout": "تسجيل الخروج"
+      },"login":{
+        "login_title": "تسجيل الدخول",
+        "email_label": "البريد الإلكتروني",
+        "password_label": "كلمة المرور",
+        "email_required": "البريد الإلكتروني مطلوب",
+        "email_invalid": "تنسيق البريد الإلكتروني غير صالح",
+        "password_required": "كلمة المرور مطلوبة",
+        "password_invalid": "تنسيق كلمة المرور غير صالح",
+        "login_button": "تسجيل الدخول",
+        "forgot_password": "هل نسيت كلمة المرور؟",
+        "email_required_better": "البريد الإلكتروني مطلوب.",
+        "email_invalid_better": "صيغة البريد الإلكتروني غير صحيحة.",
+        "password_required_better": "كلمة المرور مطلوبة.",
+        "password_invalid_better": "كلمة المرور يجب أن تحتوي على أحرف وأرقام ورمز خاص واحد على الأقل."
+      },"register":{
+        "register_title": "تسجيل حساب",
+        "name_label": "الاسم",
+        "email_label": "البريد الإلكتروني",
+        "password_label": "كلمة المرور",
+        "repassword_label": "تأكيد كلمة المرور",
+        "phone_label": "رقم الهاتف",
+        "name_required": "الاسم مطلوب",
+        "name_min": "الحد الأدنى لطول الاسم: 3",
+        "name_max": "الحد الأقصى لطول الاسم: 20",
+        "email_required": "البريد الإلكتروني مطلوب",
+        "email_invalid": "تنسيق البريد الإلكتروني غير صحيح",
+        "password_required": "كلمة المرور مطلوبة",
+        "password_invalid": "تنسيق كلمة المرور غير صالح",
+        "repassword_mismatch": "تأكيد كلمة المرور غير صحيح",
+        "phone_required": "رقم الهاتف مطلوب",
+        "phone_invalid": "تنسيق رقم الهاتف غير صالح",
+        "signup_button": "تسجيل"
+      },
+      "forgotPassword":{
+        "forgot_password_title": "نسيت كلمة المرور",
+        "email_label": "البريد الإلكتروني",
+        "email_required": "البريد الإلكتروني مطلوب",
+        "email_invalid": "تنسيق البريد الإلكتروني غير صحيح",
+        "submit_button": "إرسال",
+        "verify_code_label": "رمز التحقق",
+        "verify_code_placeholder": "أدخل الرمز المكوّن من 6 أرقام",
+        "submit_code_button": "إرسال الرمز",
+        "reset_email_label": "البريد الإلكتروني",
+        "new_password_label": "كلمة المرور الجديدة",
+        "reset_password_button": "إعادة تعيين كلمة المرور"
+      },"cart":{
+        "product.title": "العنوان",
+        "product.category": "الفئة",
+        "product.price": "السعر",
+        "product.rating": "التقييم",
+        "addToCart": "أضف إلى السلة",
+        "wishlist.title": "قائمتي المفضلة",
+        "cart.title": "سلة التسوق الخاصة بي",
+        "cart.removeAll": "إزالة الكل",
+        "cart.remove": "إزالة",
+        "cart.total": "الإجمالي",
+        "cart.checkout": "المتابعة إلى الدفع",
+        "cart.emptyTitle": "سلة التسوق فارغة",
+        "cart.emptyMessage": "تصفح المنتجات وأضفها إلى سلتك!",
+        "wishlist.emptyTitle": "المفضله الخاصه بك فارغة",
+        "wishlist.emptyMessage": "تصفح المنتجات وأضفها إلى المفضله!"
+      },  
+    "product_details": {
+        "category": "الفئة",
+        "price": "السعر",
+        "rating": "التقييم",
+        "add_to_cart": "إضافة إلى السلة",
+        "description": "الوصف",
+        "available": "متاح",
+        "sold": "تم البيع",
+        "reviews": "التقييمات",
+        "brand": "العلامة التجارية",
+        "subcategory": "التصنيف الفرعي"
+      
+    }
+
+}
+  

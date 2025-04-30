@@ -1,0 +1,22 @@
+.focus\:bg-none:focus {
+    border-color: transparent !important;
+}
+
+
+[type=text],
+[type=email],
+[type=url],
+[type=password],
+[type=number],
+[type=date],
+[type=datetime-local],
+[type=month],
+[type=search],
+[type=tel],
+[type=time],
+[type=week],
+[multiple],
+textarea,
+select {
+    border-color: rgb(193, 188, 188) !important;
+}

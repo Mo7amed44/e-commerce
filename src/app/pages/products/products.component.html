@@ -1,0 +1,101 @@
+<section class="bg-gray-50 p-4 mt-20 m-auto">
+    <h2 class="text-5xl font-semibold text-gray-800 py-4 relative">
+        {{ 'home.PRODUCTS' | translate }}
+        <span class="absolute left-0 bottom-0 w-1/4 h-1 bg-blue-500"></span>
+    </h2>
+    <!-- Search Form -->
+    <form class="max-w-lg mx-auto my-6">
+        <div class="relative w-full">
+            <input type="search" name="search"
+                class="p-2.5 w-full text-sm border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="{{ 'home.SEARCH' | translate }}" [(ngModel)]="text" />
+            <button type="submit"
+                class="absolute top-0 right-0 p-3 text-sm font-medium text-white bg-blue-500 rounded-r-lg border border-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                </svg>
+            </button>
+        </div>
+    </form>
+
+    <!-- Product Grid -->
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6 px-4">
+        @for ( product of products |search:text ; track product._id) {
+        <div
+            class="max-w-sm bg-white rounded-lg border shadow-lg hover:shadow-xl  transition-all duration-300 hover:scale-105">
+            <div class="relative">
+                <!-- Wishlist Icon -->
+                <button class="absolute top-2 left-2 p-2 rounded-full bg-white hover:bg-red-100 transition-all z-400">
+                    @if (favorites()[product.id]) {
+                    <svg (click)="toggleFavorite(product.id); removefromwhishlist(product.id)"
+                        class="w-6 h-6 text-red-500 transition-colors duration-300" fill="currentColor"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z">
+                        </path>
+                    </svg>
+                    } @else {
+                    <svg (click)="toggleFavorite(product.id); addTowhishlist(product.id)"
+                        class="w-6 h-6 text-gray-400 hover:text-red-500 transition-colors duration-300"
+                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z">
+                        </path>
+                    </svg>
+                    }
+
+                </button>
+
+                <!-- Product Image -->
+                <img class="w-full h-48 object-cover rounded-t-lg " [src]="product.imageCover"
+                    [routerLink]="['/details', product._id]">
+            </div>
+            <div class="p-4">
+                <!-- Product Title and Category -->
+                <h5 [routerLink]="['/details', product._id]" class="text-lg font-semibold text-gray-800">{{
+                    product.title.split( " " , 2).join(" ") }}</h5>
+                <p [routerLink]="['/details', product._id]" class="text-gray-500 text-sm">{{ product.category.name
+                    }}</p>
+
+                <!-- Rating -->
+                <div [routerLink]="['/details', product._id]" class="flex items-center mt-3">
+                    <div class="flex items-center space-x-1">
+                        <!-- Full Stars -->
+                        @for (star of getFullStars(product.ratingsAverage); track star) {
+                        <svg class="w-4 h-4 text-blue-300" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 22 20">
+                            <path
+                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg>
+                        }
+
+                        <!-- Empty stars -->
+                        @for (star of getEmptyStars(product.ratingsAverage); track star) {
+                        <svg class="w-4 h-4 text-gray-300 dark:text-gray-600" xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor" viewBox="0 0 22 20">
+                            <path
+                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg>
+                        }
+                    </div>
+                    <span class="ml-2 text-blue-500">{{ product.ratingsAverage }}</span>
+                </div>
+
+                <!-- Price and Add to Cart -->
+                <div class="mt-4 flex justify-between items-center">
+                    <span class="text-xl font-semibold">{{ product.price }} EGP</span>
+                    <button (click)="addProductData(product._id)"
+                        class="bg-blue-500 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        {{ 'home.ADD_TO_CART' | translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+
+
+</section>

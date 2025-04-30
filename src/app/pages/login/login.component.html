@@ -1,0 +1,77 @@
+<section class="w-full max-w-xl bg-white m-auto px-6 py-10 my-10 rounded-2xl border border-gray-200 shadow-lg mt-28">
+    <h2 class="text-3xl font-bold text-blue-500 mb-6 text-center uppercase tracking-wide">
+        {{ 'login.login_title' | translate }}
+    </h2>
+
+    <form [formGroup]="login" (ngSubmit)="submitForm()" class="space-y-6">
+        <!-- Email -->
+        <div class="relative">
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+                {{ 'login.email_label' | translate }}
+            </label>
+            <div class="relative">
+                <input formControlName="email" type="email" id="email"
+                    class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition duration-200 shadow-sm outline-none" />
+                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500 text-base animate-bounce">
+                    <i class="fa-regular fa-envelope"></i>
+                </span>
+            </div>
+
+            @if (login.get('email')?.errors && login.get('email')?.touched) {
+            <div class="mt-2 p-3 text-sm text-red-700 bg-red-100 rounded-md shadow-sm">
+                <ul class="list-disc list-inside">
+                    @if (login.get('email')?.getError('required')) {
+                    <li>{{ 'login.email_required_better' | translate }}</li>
+                    }
+                    @if (login.get('email')?.getError('email')) {
+                    <li>{{ 'login.email_invalid_better' | translate }}</li>
+                    }
+                </ul>
+            </div>
+            }
+        </div>
+
+        <!-- Password -->
+        <div class="relative">
+            <label for="password" class="block text-sm font-medium text-gray-700 mb-1">
+                {{ 'login.password_label' | translate }}
+            </label>
+            <div class="relative">
+                <input formControlName="password" type="password" id="password"
+                    class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition duration-200 shadow-sm outline-none" />
+                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500 text-base animate-bounce">
+                    <i class="fa-solid fa-lock"></i>
+                </span>
+            </div>
+
+            @if (login.get('password')?.errors && login.get('password')?.touched) {
+            <div class="mt-2 p-3 text-sm text-red-700 bg-red-100 rounded-md shadow-sm">
+                <ul class="list-disc list-inside">
+                    @if (login.get('password')?.getError('required')) {
+                    <li>{{ 'login.password_required_better' | translate }}</li>
+                    }
+                    @if (login.get('password')?.getError('pattern')) {
+                    <li>{{ 'login.password_invalid_better' | translate }}</li>
+                    }
+                </ul>
+            </div>
+            }
+        </div>
+
+        <!-- Submit + Forgot -->
+        <div class="flex items-center justify-between">
+            <button type="submit"
+                class="bg-blue-500 hover:bg-green-600 text-white font-medium px-6 py-2 rounded-md transition-all duration-200 shadow-md">
+                {{ 'login.login_button' | translate }}
+                @if (isLoading) {
+                <span><i class="fa-solid fa-spinner fa-spin ml-2"></i></span>
+                }
+            </button>
+
+            <a routerLink="/forgot-password"
+                class="text-sm text-blue-500 hover:text-blue-700 hover:underline transition duration-150">
+                {{ 'login.forgot_password' | translate }}
+            </a>
+        </div>
+    </form>
+</section>

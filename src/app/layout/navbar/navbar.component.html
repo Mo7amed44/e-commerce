@@ -1,0 +1,173 @@
+<nav
+    class="bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm fixed top-0 left-0 w-full z-50">
+    <div class="max-w-screen-xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
+
+        <!-- Logo -->
+        <a routerLink="/home" class="flex items-center gap-3 group">
+            <div
+                class="w-11 h-11 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-md">
+                <span class="text-white text-2xl font-black tracking-widest animate-pulseV">V</span>
+            </div>
+            <div class="flex flex-col">
+                <div
+                    class="text-3xl font-extrabold text-blue-500 tracking-wide hover:text-blue-600 transition-all duration-300">
+                    <span class="text-gray-800 dark:text-white">Va</span><span class="text-blue-500">trina</span>
+                </div>
+                <span class="text-sm text-gray-500 dark:text-gray-400 -mt-1 tracking-wide">Your Modern Storefront</span>
+            </div>
+        </a>
+
+        <!-- Center Nav Links -->
+        @if (isLogin()) {
+        <div class="hidden md:flex flex-grow justify-center items-center">
+            <ul class="flex flex-row gap-6 dark:text-gray-300 font-medium capitalize">
+                <li><a routerLink="/home" routerLinkActive="text-blue-500" class="hover:text-blue-500 transition">{{
+                        'navbar.home' | translate }}</a></li>
+                <li><a routerLink="/products" routerLinkActive="text-blue-500" class="hover:text-blue-500 transition">{{
+                        'navbar.products' | translate }}</a></li>
+                <li><a routerLink="/categories" routerLinkActive="text-blue-500"
+                        class="hover:text-blue-500 transition">{{ 'navbar.categories' | translate }}</a></li>
+                <li><a routerLink="/brands" routerLinkActive="text-blue-500" class="hover:text-blue-500 transition">{{
+                        'navbar.brands' | translate }}</a></li>
+            </ul>
+        </div>
+        }
+
+        <!-- Mobile Menu Button -->
+        <button (click)="isMenuOpen = !isMenuOpen" (click)="chooseLink()" (click)="btnNavbar()" type="button"
+            class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-400">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+
+        <!-- Right Side -->
+        <div class="hidden md:flex items-center gap-6 dark:text-gray-300 font-medium capitalize">
+            @if (isLogin()) {
+            <!-- Cart -->
+            <li class="relative list-none">
+                <a routerLink="/cart" routerLinkActive="text-blue-500" class="text-xl hover:text-blue-500 transition">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span
+                        class="absolute -top-2 -left-2 bg-blue-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">{{
+                        countCart }}</span>
+                </a>
+            </li>
+
+            <!-- Wishlist -->
+            <li class="relative list-none">
+                <a routerLink="/wishlist" routerLinkActive="text-red-500" class="text-xl hover:text-red-500 transition">
+                    <i class="fa-solid fa-heart"></i>
+                    <span
+                        class="absolute -top-2 -left-2 bg-blue-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">{{
+                        countWishlist }}</span>
+                </a>
+            </li>
+
+            <!-- Language Dropdown -->
+            <li class="list-none relative text-2xl cursor-pointer">
+                <a (click)="toggleDropdown()" id="dropdownButton"
+                    class="inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <i class="fa-solid fa-earth-americas"></i>
+                    <svg class="w-2.5 h-2.5 ms-1" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4" />
+                    </svg>
+                </a>
+                @if (isDropdownOpen) {
+                <div id="dropdownMenu"
+                    class="absolute right-0 mt-2 z-50 bg-white divide-y divide-gray-100 rounded-lg shadow w-20 dark:bg-gray-700">
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+                        <li (click)="changeLang('en')" [hidden]="currentLang('en')"><a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">EN</a>
+                        </li>
+                        <li (click)="changeLang('ar')" [hidden]="currentLang('ar')"><a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">AR</a>
+                        </li>
+                    </ul>
+                </div>
+                }
+            </li>
+
+            <!-- Sign Out -->
+            <li class="list-none">
+                <button (click)="authService.signout()" class="hover:text-blue-500 transition">{{ 'navbar.signout' |
+                    translate }}</button>
+            </li>
+            }
+
+            @if (!isLogin()) {
+            <!-- Language Dropdown -->
+            <li class="list-none relative text-2xl cursor-pointer">
+                <a (click)="toggleDropdown()" id="dropdownButton"
+                    class="inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <i class="fa-solid fa-earth-americas"></i>
+                    <svg class="w-2.5 h-2.5 ms-1" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4" />
+                    </svg>
+                </a>
+                @if (isDropdownOpen) {
+                <div id="dropdownMenu"
+                    class="absolute right-0 mt-2 z-50 bg-white divide-y divide-gray-100 rounded-lg shadow w-20 dark:bg-gray-700">
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+                        <li (click)="changeLang('en')" [hidden]="currentLang('en')"><a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">EN</a>
+                        </li>
+                        <li (click)="changeLang('ar')" [hidden]="currentLang('ar')"><a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">AR</a>
+                        </li>
+                    </ul>
+                </div>
+                }
+            </li>
+
+            <!-- Auth Links -->
+            <li class="list-none"><a routerLink="/login" routerLinkActive="text-blue-500"
+                    class="hover:text-blue-500 transition">{{ 'navbar.login' | translate }}</a></li>
+            <li class="list-none"><a routerLink="/register" routerLinkActive="text-blue-500"
+                    class="hover:text-blue-500 transition">{{ 'navbar.register' | translate }}</a></li>
+            }
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    @if (isMenuOpen) {
+    <div [class.hidden]="!isOpen" class="md:hidden bg-gray-100 dark:bg-gray-900 px-4 pb-4">
+        <ul class="flex flex-col gap-4 text-gray-600 dark:text-gray-300 font-medium capitalize">
+            @if (isLogin()) {
+            <li><a (click)="chooseLink()" routerLink="/home" routerLinkActive="text-blue-500"
+                    class="hover:text-blue-500 transition">{{
+                    'navbar.home'
+                    | translate }}</a></li>
+            <li><a (click)="chooseLink()" routerLink="/products" routerLinkActive="text-blue-500"
+                    class="hover:text-blue-500 transition">{{
+                    'navbar.products' | translate }}</a></li>
+            <li><a (click)="chooseLink()" routerLink="/categories" routerLinkActive="text-blue-500"
+                    class="hover:text-blue-500 transition">{{
+                    'navbar.categories' | translate }}</a></li>
+            <li><a (click)="chooseLink()" routerLink="/brands" routerLinkActive="text-blue-500"
+                    class="hover:text-blue-500 transition">{{
+                    'navbar.brands' | translate }}</a></li>
+            <li><a (click)="chooseLink()" routerLink="/cart" routerLinkActive="text-blue-500"
+                    class="hover:text-blue-500 transition flex items-center gap-2"><i
+                        class="fa-solid fa-cart-shopping text-xl"></i> Cart ({{ countCart }})</a></li>
+            <li><a (click)="chooseLink()" routerLink="/wishlist" routerLinkActive="text-red-500"
+                    class="hover:text-red-500 transition flex items-center gap-2"><i
+                        class="fa-solid fa-heart text-xl"></i> Wishlist ({{ countWishlist }})</a></li>
+            <li><button (click)="chooseLink()" (click)="authService.signout()" class="hover:text-blue-500 transition">{{
+                    'navbar.signout' |
+                    translate
+                    }}</button></li>
+            }
+
+            @if (!isLogin()) {
+            <li><a routerLink="/login" routerLinkActive="text-blue-500" class="hover:text-blue-500 transition">{{
+                    'navbar.login' | translate }}</a></li>
+            <li><a routerLink="/register" routerLinkActive="text-blue-500" class="hover:text-blue-500 transition">{{
+                    'navbar.register' | translate }}</a></li>
+            }
+        </ul>
+    </div>
+    }
+</nav>

@@ -1,0 +1,156 @@
+<section class="w-full max-w-xl bg-white m-auto px-6 py-5 my-10 rounded-2xl border border-gray-200 shadow-lg mt-24">
+    <h2 class="text-3xl font-bold text-blue-500 text-center uppercase tracking-wide">{{ 'register.register_title' |
+        translate }}</h2>
+
+    <form [formGroup]="register" (ngSubmit)="submitForm()" class="space-y-6">
+
+        <!-- Name -->
+        <div class="relative">
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">{{ 'register.name_label' | translate
+                }}</label>
+            <div class="relative">
+                <input formControlName="name" type="text" id="name"
+                    class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition duration-200 shadow-sm outline-none" />
+
+                <!-- Icon with continuous animation -->
+                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500 text-base animate-bounce">
+                    <i class="fa-regular fa-user"></i>
+                </span>
+            </div>
+
+            @if (register.get('name')?.errors && register.get('name')?.touched) {
+            <div class="mt-2 p-3 text-sm text-red-700 bg-red-100 rounded-md shadow-sm">
+                <ul class="list-disc list-inside">
+                    @if (register.get('name')?.getError('required')) {
+                    <li>{{ 'register.name_required' | translate }}</li>
+                    }
+                    @if (register.get('name')?.getError('minLength')) {
+                    <li>{{ 'register.name_min' | translate }} : 3</li>
+                    }
+                    @if (register.get('name')?.getError('maxLength')) {
+                    <li>{{ 'register.name_max' | translate }} : 20</li>
+                    }
+                </ul>
+            </div>
+            }
+        </div>
+
+        <!-- Email -->
+        <div class="relative">
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">{{ 'register.email_label' |
+                translate }}</label>
+            <div class="relative">
+                <input formControlName="email" type="email" id="email"
+                    class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition duration-200 shadow-sm outline-none" />
+
+                <!-- Icon with continuous animation -->
+                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500 text-base animate-bounce">
+                    <i class="fa-regular fa-envelope"></i>
+                </span>
+            </div>
+
+            @if (register.get('email')?.errors && register.get('email')?.touched) {
+            <div class="mt-2 p-3 text-sm text-red-700 bg-red-100 rounded-md shadow-sm">
+                <ul class="list-disc list-inside">
+                    @if (register.get('email')?.getError('required')) {
+                    <li>{{ 'register.email_required' | translate }}</li>
+                    }
+                    @if (register.get('email')?.getError('email')) {
+                    <li>{{ 'register.email_invalid' | translate }}</li>
+                    }
+                </ul>
+            </div>
+            }
+        </div>
+
+        <!-- Password -->
+        <div class="relative">
+            <label for="password" class="block text-sm font-medium text-gray-700 mb-1">{{ 'register.password_label' |
+                translate
+                }}</label>
+            <div class="relative">
+                <input formControlName="password" type="password" id="password"
+                    class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition duration-200 shadow-sm outline-none" />
+
+                <!-- Icon with continuous animation -->
+                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500 text-base animate-bounce">
+                    <i class="fa-solid fa-lock"></i>
+                </span>
+            </div>
+
+            @if (register.get('password')?.errors && register.get('password')?.touched) {
+            <div class="mt-2 p-3 text-sm text-red-700 bg-red-100 rounded-md shadow-sm">
+                <ul class="list-disc list-inside">
+                    @if (register.get('password')?.getError('required')) {
+                    <li>{{ 'register.password_required' | translate }}</li>
+                    }
+                    @if (register.get('password')?.getError('pattern')) {
+                    <li>{{ 'register.password_invalid' | translate }}</li>
+                    }
+                </ul>
+            </div>
+            }
+        </div>
+
+        <!-- Re-Password -->
+        <div class="relative">
+            <label for="rePassword" class="block text-sm font-medium text-gray-700 mb-1">{{ 'register.repassword_label'
+                | translate
+                }}</label>
+            <div class="relative">
+                <input formControlName="rePassword" type="password" id="rePassword"
+                    class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition duration-200 shadow-sm outline-none" />
+
+                <!-- Icon with continuous animation -->
+                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500 text-base animate-bounce">
+                    <i class="fa-solid fa-lock"></i>
+                </span>
+            </div>
+
+            @if (register.getError('mismatch') && register.get('rePassword')?.touched) {
+            <div class="mt-2 p-3 text-sm text-red-700 bg-red-100 rounded-md shadow-sm">
+                <ul class="list-disc list-inside">
+                    <li>{{ 'register.repassword_mismatch' | translate }}</li>
+                </ul>
+            </div>
+            }
+        </div>
+
+        <!-- Phone -->
+        <div class="relative">
+            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">{{ 'register.phone_label' |
+                translate }}</label>
+            <div class="relative">
+                <input formControlName="phone" type="tel" id="phone"
+                    class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition duration-200 shadow-sm outline-none" />
+
+                <!-- Icon with continuous animation -->
+                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500 text-base animate-bounce">
+                    <i class="fa-solid fa-phone"></i>
+                </span>
+            </div>
+
+            @if (register.get('phone')?.errors && register.get('phone')?.touched) {
+            <div class="mt-2 p-3 text-sm text-red-700 bg-red-100 rounded-md shadow-sm">
+                <ul class="list-disc list-inside">
+                    @if (register.get('phone')?.getError('required')) {
+                    <li>{{ 'register.phone_required' | translate }}</li>
+                    }
+                    @if (register.get('phone')?.getError('pattern')) {
+                    <li>{{ 'register.phone_invalid' | translate }}</li>
+                    }
+                </ul>
+            </div>
+            }
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit"
+            class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-2 rounded-md transition-all duration-200 shadow-md">
+            {{ 'register.signup_button' | translate }}
+            @if (isLoading) {
+            <span><i class="fa-solid fa-spinner fa-spin ml-2"></i></span>
+            }
+        </button>
+    </form>
+</section>

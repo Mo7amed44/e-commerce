@@ -1,0 +1,93 @@
+<div class="container mt-28">
+    @if (detailsProduct) {
+    <section class="max-w-5xl mx-auto bg-white shadow-xl rounded-3xl overflow-hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- Main Image + Thumbnails -->
+            <div class="bg-gray-50 p-6 flex flex-col items-center">
+                <!-- Main Image -->
+                <img [src]="detailsProduct.imageCover" alt="{{ detailsProduct.title }}"
+                    class="w-[80%] max-w-md h-auto object-cover rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 mb-6"
+                    loading="lazy" />
+
+                <!-- Image Thumbnails -->
+                <div class="flex gap-2 overflow-x-auto max-w-full">
+                    @for (img of detailsProduct.images; track img) {
+                    <img [src]="img" (click)="changeMainImage(img)"
+                        class="w-16 h-16 rounded-lg object-cover border-2 border-transparent hover:border-blue-500 transition duration-200 cursor-pointer"
+                        loading="lazy" />
+                    }
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="p-8 space-y-6">
+                <h2 class="text-4xl font-extrabold text-gray-800 hover:text-blue-500 transition-colors duration-300">
+                    {{ detailsProduct.title }}
+                </h2>
+
+                <div class="text-sm text-gray-500 flex flex-col sm:flex-row sm:items-center sm:gap-4">
+                    <span class="font-medium">{{ 'product_details.category' | translate }}:</span>
+                    <span>{{ detailsProduct.category.name }}</span>
+                </div>
+
+                <div class="text-2xl font-semibold text-blue-600">
+                    {{ detailsProduct.price }} EGP
+                </div>
+
+                <!-- Ratings -->
+                <div class="flex items-center gap-2">
+                    <div class="flex">
+                        @for (star of getFullStars(detailsProduct.ratingsAverage); track star) {
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M9.049 2.927C9.365 2.035 10.635 2.035 10.951 2.927L12.313 6.64L16.287 6.97C17.237 7.05 17.629 8.237 16.88 8.832L13.734 11.318L14.734 15.208C14.951 16.112 13.944 16.796 13.143 16.318L10 14.435L6.857 16.318C6.056 16.796 5.049 16.112 5.266 15.208L6.266 11.318L3.12 8.832C2.371 8.237 2.763 7.05 3.713 6.97L7.687 6.64L9.049 2.927Z" />
+                        </svg>
+                        }
+                        @for (star of getEmptyStars(detailsProduct.ratingsAverage); track star) {
+                        <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M9.049 2.927C9.365 2.035 10.635 2.035 10.951 2.927L12.313 6.64L16.287 6.97C17.237 7.05 17.629 8.237 16.88 8.832L13.734 11.318L14.734 15.208C14.951 16.112 13.944 16.796 13.143 16.318L10 14.435L6.857 16.318C6.056 16.796 5.049 16.112 5.266 15.208L6.266 11.318L3.12 8.832C2.371 8.237 2.763 7.05 3.713 6.97L7.687 6.64L9.049 2.927Z" />
+                        </svg>
+                        }
+                    </div>
+                    <span class="text-sm font-medium text-gray-600">
+                        {{ detailsProduct.ratingsAverage }} / 5
+                    </span>
+                </div>
+
+                <!-- CTA Button -->
+                <button (click)="getCartData(detailsProduct._id)"
+                    class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-lg transition transform  focus:outline-none focus:ring-2 ">
+                    {{ 'product_details.add_to_cart' | translate }}
+                </button>
+
+                <!-- Extra Info -->
+                <div class="pt-6 border-t border-gray-200 space-y-2 text-sm text-gray-600">
+                    <p><strong>{{ 'product_details.description' | translate }}:</strong> {{ detailsProduct.description
+                        }}</p>
+                    <p><strong>{{ 'product_details.available' | translate }}:</strong> {{ detailsProduct.quantity }}</p>
+                    <p><strong>{{ 'product_details.sold' | translate }}:</strong> {{ detailsProduct.sold }}</p>
+                    <p><strong>{{ 'product_details.reviews' | translate }}:</strong> {{ detailsProduct.ratingsQuantity
+                        }}</p>
+                    <p><strong>{{ 'product_details.brand' | translate }}:</strong> {{ detailsProduct.brand.name }}</p>
+                    <p><strong>{{ 'product_details.subcategory' | translate }}:</strong> {{
+                        detailsProduct.subcategory[0].name }}</p>
+                </div>
+
+                <!-- Brand & Category Logos -->
+                <div class="flex gap-8 pt-4">
+                    <div class="text-center">
+                        <img [src]="detailsProduct.brand.image" class="w-14 h-14 mx-auto object-contain" />
+                    </div>
+                    <div class="text-center">
+                        <img [src]="detailsProduct.category.image" class="w-14 h-14 mx-auto object-contain" />
+                        <p class="text-xs text-gray-500 mt-1">{{ detailsProduct.category.name }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    }
+</div>

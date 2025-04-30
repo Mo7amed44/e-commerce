@@ -1,0 +1,73 @@
+@if (wishList().length > 0) {
+<section class="p-6 max-w-7xl mx-auto mt-12">
+
+    <h2 class="text-3xl font-bold text-center my-5"> {{ 'cart.wishlist.title' | translate }}</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        @for (product of wishList(); track product._id) {
+        <div
+            class="bg-white rounded-xl shadow-md overflow-hidden relative transition-all hover:shadow-lg flex flex-col h-full">
+
+            <img [src]="product.imageCover" alt="{{product.title}}" class="w-full h-56 object-contain p-4 bg-gray-50">
+
+
+            <!-- محتوى الكارت -->
+            <div class="p-4 flex-1 flex flex-col">
+                <h3 class="text-lg font-semibold text-gray-800">{{ product.title }}</h3>
+                <p class="text-sm text-gray-500 mt-1">{{ product.category.name }}</p>
+                <div class="flex items-center mt-3 mb-4">
+                    <div class="flex items-center space-x-1">
+                        <!-- Full stars -->
+                        @for (star of getFullStars(product.ratingsAverage); track star) {
+                        <svg class="w-4 h-4 text-blue-300" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 22 20">
+                            <path
+                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg>
+                        }
+
+                        <!-- Empty stars -->
+                        @for (star of getEmptyStars(product.ratingsAverage); track star) {
+                        <svg class="w-4 h-4 text-gray-300 dark:text-gray-600" xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor" viewBox="0 0 22 20">
+                            <path
+                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg>
+                        }
+                    </div>
+
+                    <span class="bg-blue-100 text-blue-500 text-xs font-semibold px-2 py-0.5 rounded-sm ms-3">{{
+                        product.ratingsAverage }}</span>
+                </div>
+                <p class="text-blue-500 font-bold mt-auto">{{ product.price }} EGP</p>
+            </div>
+
+            <!-- الزر -->
+            <div class="px-5 pb-5">
+                <button type="button" (click)="addToCartAndRemove(product._id)"
+                    class="w-full text-white bg-blue-500 hover:from-green-500 hover:to-blue-600  font-medium rounded-full text-sm px-5 py-2.5 text-center transition-all duration-300">
+                    {{ 'home.ADD_TO_CART' | translate }}
+                </button>
+            </div>
+
+            <!-- زر الحذف -->
+            <button class="absolute top-3 right-3 bg-red-100 text-red-600 p-2 rounded-full hover:bg-red-200 transition">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
+                </svg>
+            </button>
+        </div>
+
+
+
+        }
+    </div>
+
+</section>
+}@else {
+<div class="flex flex-col items-center justify-center text-center py-20 text-gray-400 mt-20">
+    <i class="fa-solid fa-heart text-6xl mb-4"></i>
+    <h2 class="text-3xl font-bold mb-2"> {{ 'cart.wishlist.emptyTitle' | translate }}</h2>
+    <p class="text-lg"> {{ 'cart.wishlist.emptyMessage' | translate }}</p>
+</div>
+}

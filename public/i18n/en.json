@@ -1,0 +1,110 @@
+
+{
+    "home":{ 
+    "discount_title": "Huge discounts up to 50%",
+    "discount_description": "Latest offers on selected products",
+    "shop_now": "Shop Now",
+    "TITLE": "Hello",
+    "DESCRIPTION": "Here comes some text...",
+    "HOME": "Home",
+    "PRODUCTS": "Products",
+    "CATEGORIES": "Categories",
+    "SEARCH": "Search...",
+    "ADD_TO_CART": "Add to cart"
+
+},
+"navbar":{
+        "home": "Home",
+        "products": "Products",
+        "categories": "Categories",
+        "brands": "Brands",
+        "login": "Login",
+        "register": "Register",
+        "signout": "Sign Out"
+},
+"login":{
+        "login_title": "Login",
+        "email_label": "Email",
+        "password_label": "Password",
+        "email_required": "Email is required",
+        "email_invalid": "Email format is invalid",
+        "password_required": "Password is required",
+        "password_invalid": "Password format is invalid",
+        "login_button": "Login",
+        "forgot_password": "Forgot your password?",
+        "email_required_better": "Email is required.",
+        "email_invalid_better": "Invalid email format.",
+        "password_required_better": "Password is required.",
+        "password_invalid_better": "Password must include letters, numbers, and at least one special character."
+        
+        
+      },
+      "register":{
+        "register_title": "Register",
+        "name_label": "Name",
+        "email_label": "Email",
+        "password_label": "Password",
+        "repassword_label": "Re-Password",
+        "phone_label": "Phone",
+        "name_required": "Name is required",
+        "name_min": "Name minLength : 3",
+        "name_max": "Name maxLength : 20",
+        "email_required": "Email is required",
+        "email_invalid": "Invalid email format",
+        "password_required": "Password is required",
+        "password_invalid": "Password format is invalid",
+        "repassword_mismatch": "Password confirmation is incorrect",
+        "phone_required": "Phone is required",
+        "phone_invalid": "Invalid phone format",
+        "signup_button": "Sign Up"
+      },
+      "forgotPassword":{
+        "forgot_password_title": "Forgot Password",
+        "email_label": "Email",
+        "email_required": "Email is required",
+        "email_invalid": "Email format is invalid",
+        "submit_button": "Submit",
+        "verify_code_label": "Verification Code",
+        "verify_code_placeholder": "Enter the 6-digit code",
+        "submit_code_button": "Submit Code",
+        "reset_email_label": "Email",
+        "new_password_label": "New Password",
+        "reset_password_button": "Reset Password"
+      }
+      ,"cart":{
+        "product.title": "Title",
+        "product.category": "Category",
+        "product.price": "Price",
+        "product.rating": "Rating",
+        "addToCart": "Add to cart",
+        "wishlist.title": "My Wishlist",
+        "cart.title": "My Shopping Cart",
+        "cart.removeAll": "Remove All",
+        "cart.remove": "Remove",
+        "cart.total": "Total",
+        "cart.checkout": "Proceed to Checkout",
+        "cart.emptyTitle": "Your cart is empty",
+        "cart.emptyMessage": "Browse products and add them to your cart!",
+        "wishlist.emptyTitle": "Your wishlist is empty",
+        "wishlist.emptyMessage": "Browse products and add them to your wishlist!"
+      },
+        "product_details": {
+          "category": "Category",
+          "price": "Price",
+          "rating": "Rating",
+          "add_to_cart": "Add to Cart",
+          "description": "Description",
+          "available": "Available",
+          "sold": "Sold",
+          "reviews": "Reviews",
+          "brand": "Brand",
+          "subcategory": "Subcategory"
+        }
+      
+      
+      
+      
+      
+
+}
+
