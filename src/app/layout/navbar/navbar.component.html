@@ -1,5 +1,4 @@
-<nav
-    class="bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm fixed top-0 left-0 w-full z-50">
+<nav class="bg-gray-100  border-b border-gray-200  shadow-sm fixed top-0 left-0 w-full z-50">
     <div class="max-w-screen-xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
 
         <!-- Logo -->
@@ -11,16 +10,16 @@
             <div class="flex flex-col">
                 <div
                     class="text-3xl font-extrabold text-blue-500 tracking-wide hover:text-blue-600 transition-all duration-300">
-                    <span class="text-gray-800 dark:text-white">Va</span><span class="text-blue-500">trina</span>
+                    <span class="text-gray-800 ">Va</span><span class="text-blue-500">trina</span>
                 </div>
-                <span class="text-sm text-gray-500 dark:text-gray-400 -mt-1 tracking-wide">Your Modern Storefront</span>
+                <span class="text-sm text-gray-500  -mt-1 tracking-wide">Your Modern Storefront</span>
             </div>
         </a>
 
         <!-- Center Nav Links -->
         @if (isLogin()) {
         <div class="hidden md:flex flex-grow justify-center items-center">
-            <ul class="flex flex-row gap-6 dark:text-gray-300 font-medium capitalize">
+            <ul class="flex flex-row gap-6  font-medium capitalize">
                 <li><a routerLink="/home" routerLinkActive="text-blue-500" class="hover:text-blue-500 transition">{{
                         'navbar.home' | translate }}</a></li>
                 <li><a routerLink="/products" routerLinkActive="text-blue-500" class="hover:text-blue-500 transition">{{
@@ -35,14 +34,14 @@
 
         <!-- Mobile Menu Button -->
         <button (click)="isMenuOpen = !isMenuOpen" (click)="chooseLink()" (click)="btnNavbar()" type="button"
-            class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-400">
+            class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:bg-gray-100  focus:outline-none focus:ring-2 focus:ring-sky-400">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
         </button>
 
         <!-- Right Side -->
-        <div class="hidden md:flex items-center gap-6 dark:text-gray-300 font-medium capitalize">
+        <div class="hidden md:flex items-center gap-6  font-medium capitalize">
             @if (isLogin()) {
             <!-- Cart -->
             <li class="relative list-none">
@@ -66,8 +65,7 @@
 
             <!-- Language Dropdown -->
             <li class="list-none relative text-2xl cursor-pointer">
-                <a (click)="toggleDropdown()" id="dropdownButton"
-                    class="inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <a (click)="toggleDropdown()" id="dropdownButton" class="inline-flex items-center ">
                     <i class="fa-solid fa-earth-americas"></i>
                     <svg class="w-2.5 h-2.5 ms-1" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -76,13 +74,13 @@
                 </a>
                 @if (isDropdownOpen) {
                 <div id="dropdownMenu"
-                    class="absolute right-0 mt-2 z-50 bg-white divide-y divide-gray-100 rounded-lg shadow w-20 dark:bg-gray-700">
-                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+                    class="absolute right-0 mt-2 z-50 bg-white divide-y divide-gray-100 rounded-lg shadow w-20 ">
+                    <ul class="py-2 text-sm text-gray-700 ">
                         <li (click)="changeLang('en')" [hidden]="currentLang('en')"><a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">EN</a>
+                                class="block px-4 py-2 hover:bg-gray-100 ">EN</a>
                         </li>
                         <li (click)="changeLang('ar')" [hidden]="currentLang('ar')"><a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">AR</a>
+                                class="block px-4 py-2 hover:bg-gray-100 ">AR</a>
                         </li>
                     </ul>
                 </div>
@@ -99,8 +97,7 @@
             @if (!isLogin()) {
             <!-- Language Dropdown -->
             <li class="list-none relative text-2xl cursor-pointer">
-                <a (click)="toggleDropdown()" id="dropdownButton"
-                    class="inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <a (click)="toggleDropdown()" id="dropdownButton" class="inline-flex items-center ">
                     <i class="fa-solid fa-earth-americas"></i>
                     <svg class="w-2.5 h-2.5 ms-1" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -109,13 +106,13 @@
                 </a>
                 @if (isDropdownOpen) {
                 <div id="dropdownMenu"
-                    class="absolute right-0 mt-2 z-50 bg-white divide-y divide-gray-100 rounded-lg shadow w-20 dark:bg-gray-700">
-                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+                    class="absolute right-0 mt-2 z-50 bg-white divide-y divide-gray-100 rounded-lg shadow w-20 ">
+                    <ul class="py-2 text-sm text-gray-700">
                         <li (click)="changeLang('en')" [hidden]="currentLang('en')"><a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">EN</a>
+                                class="block px-4 py-2 hover:bg-gray-100 ">EN</a>
                         </li>
                         <li (click)="changeLang('ar')" [hidden]="currentLang('ar')"><a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">AR</a>
+                                class="block px-4 py-2 hover:bg-gray-100">AR</a>
                         </li>
                     </ul>
                 </div>
@@ -133,8 +130,8 @@
 
     <!-- Mobile Menu -->
     @if (isMenuOpen) {
-    <div [class.hidden]="!isOpen" class="md:hidden bg-gray-100 dark:bg-gray-900 px-4 pb-4">
-        <ul class="flex flex-col gap-4 text-gray-600 dark:text-gray-300 font-medium capitalize">
+    <div [class.hidden]="!isOpen" class="md:hidden bg-gray-100 px-4 pb-4">
+        <ul class="flex flex-col gap-4 text-gray-600 font-medium capitalize">
             @if (isLogin()) {
             <li><a (click)="chooseLink()" routerLink="/home" routerLinkActive="text-blue-500"
                     class="hover:text-blue-500 transition">{{

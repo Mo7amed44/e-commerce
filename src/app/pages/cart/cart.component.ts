@@ -28,7 +28,7 @@ export class CartComponent implements OnInit, OnDestroy {
    */
   ngOnInit(): void {
     this.getData();
-    this.removeItem; // Ensure removeItem is used appropriately with an ID
+    // Ensure removeItem is used appropriately with an ID
   }
 
   /**
